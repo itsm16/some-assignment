@@ -4,7 +4,7 @@ function Card({ desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit
   const [readMore, setReadmore] = useState(false);
 
   return (
-    <div className="my-2 flex flex-col border border-gray-400/50 px-5 pt-3 text-left gap-2 rounded-lg">
+    <div className="my-2 flex flex-col border border-gray-400/20 px-5 pt-3 text-left gap-2 rounded-lg">
       <div>title</div>
       <div className="h-fit">{readMore ? desc : desc.slice(0, 150)}
         <span onClick={() => setReadmore(!readMore)} className="text-gray-400 font-semibold">
