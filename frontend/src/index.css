@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+.main-height{
+    min-height: calc(100vh - 65px);
+    background-color: black;
+}
+
 body{
-    position: relative;
+    background-color: black;
 }
