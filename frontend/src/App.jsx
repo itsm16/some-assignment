@@ -3,6 +3,7 @@ import Button from "./components/Button"
 import Main from "./components/Main"
 import Modal from "./components/Modal"
 import Nav from "./components/Nav"
+import Toast from "./components/Toast"
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Main/>
     <Button open={open} setOpen={setOpen}/>
     <Modal open={open} setOpen={setOpen}/>
+    <Toast/>
     </>
   )
 }
