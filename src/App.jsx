@@ -7,14 +7,17 @@ import Toast from "./components/Toast"
 
 
 function App() {
+  
   const [open, setOpen] = useState(false);
+  const [toast, setToast] = useState(false);
   return (
     <>
     <Nav/>
     <Main/>
     <Button open={open} setOpen={setOpen}/>
-    <Modal open={open} setOpen={setOpen}/>
-    <Toast/>
+    <Modal open={open} setOpen={setOpen} setToast={setToast}/>
+    <Toast toast={toast} setToast={setToast}/>
+    {/* <button onClick={()=> console.log(toast)} className="btn">k</button> */}
     </>
   )
 }

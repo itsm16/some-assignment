@@ -2,8 +2,11 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { z } from 'zod'
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-function Modal({ open, setOpen }) {
+function Modal({ open, setOpen, setToast }) {
+    const user = useSelector(state => state.user.user)
+    const [checked, setChecked] = useState(false);
     const [validationError, setValidationError] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -14,7 +17,7 @@ function Modal({ open, setOpen }) {
 
     const onSubmit = async (data) => {
         const validation = formSchema.safeParse(data);
-
+        // console.log(checked ? (title, description) : (title, description, user));
         if (!validation.success) {
             // console.error("Validation Error", validation.error)
             setValidationError(true)
@@ -23,12 +26,13 @@ function Modal({ open, setOpen }) {
 
         const { description, title } = validation.data;
         try {
-            await axios.post("http://localhost:3000/api/feedback", {
-                title, description
-            })
+            await axios.post("http://localhost:3000/api/feedback",
+                checked ? { title, description } : { title, description, user }
+            )
             reset();
             setValidationError(false);
             setOpen(false);
+            setToast(true);
             console.log("Sent")
         } catch (error) {
             return error
@@ -58,13 +62,19 @@ function Modal({ open, setOpen }) {
                                         className="text-white border-gray-300/40 bg-black textarea outline-none"
                                     />
                                     {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
+                                    <label className='flex gap-3 text-sm w-[60%]'>
+                                        Record feedback without username
+                                        <input onChange={() => setChecked(!checked)} checked={checked ? true : false} className={`checkbox checkbox-sm checked:bg-white checked:text-black`} type="checkbox" />
+                                    </label>
                                 </div>
                             </div>
+                            
                             {validationError && <div>
                                 <div className="text-red-500 text-sm">Above fields should be in given range</div>
                                 <div className="text-red-500 text-sm">Title: 3-40, Description: 3-300</div>
-                            </div> }
-                            <button type="submit" className="btn w-[40%] max-w-[400px] rounded-md bg-gray-300 text-black border-none">Submit</button>
+                            </div>}
+
+                            <button type="submit" className="btn w-[40%] max-w-[400px] rounded-md bg-gray-200 text-black border-none">Submit</button>
                         </div>
                     </form>
                 </div>
