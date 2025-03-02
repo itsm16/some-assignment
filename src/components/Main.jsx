@@ -8,7 +8,7 @@ function Main() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://some-backend-task.onrender.com/api/feedbacks");
+        const res = await axios.get("https://some-backend-task.onrender.com/api/feedback");
         setData(res.data.allFeedbacks);
         //console.log(res.data.allFeedbacks); 
       } catch (error) {
@@ -30,7 +30,7 @@ function Main() {
             <Card key={ele._id} user={ele.name} title={ele.title} desc={ele.description}/>
           )
           :
-          <h1>Loading</h1>
+          <h1 className="animate-pulse text-center my-6 text-md font-semibold">Loading....</h1>
         }
       </div>
     </div>

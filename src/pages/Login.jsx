@@ -33,7 +33,7 @@ function Login() {
 
         try {
             const {email, password} = data;
-            const query = await axios.post("http://localhost:3000/api/login",{
+            const query = await axios.post("https://some-backend-task.onrender.com/api/login",{
                 email, password
             },
             {withCredentials: true})

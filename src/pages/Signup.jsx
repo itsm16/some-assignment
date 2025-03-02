@@ -17,7 +17,7 @@ function Signup() {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    function onSubmit(data) {
+    async function onSubmit(data) {
         const validation = formSchema.safeParse(data);
         // { !validation.success && setError(true) }
 
@@ -27,10 +27,15 @@ function Signup() {
         }
 
         try {
-            
+            const {email, password} = data;
+            const query = await axios.post("https://some-backend-task.onrender.com/api/signup",{
+                name, email, password
+            },
+            {withCredentials: true})
 
             setError(false);
             reset();
+            navigate("/");
         } catch (error) {
 
         }

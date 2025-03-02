@@ -29,7 +29,7 @@ function Modal({ open, setOpen, setToast }) {
 
         const { description, title } = validation.data;
         try {
-            await axios.post("http://localhost:3000/api/feedback",
+            await axios.post("https://some-backend-task.onrender.com/api/feedback",
                 checked ? { title, description } : { title, description, name },
                 { withCredentials: true }
             )
