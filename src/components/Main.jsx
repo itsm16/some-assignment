@@ -27,7 +27,7 @@ function Main() {
           data 
           ?
           data.map(ele =>
-            <Card key={ele._id} title={ele.title} desc={ele.description}/>
+            <Card key={ele._id} user={ele.name} title={ele.title} desc={ele.description}/>
           )
           :
           <h1>Loading</h1>

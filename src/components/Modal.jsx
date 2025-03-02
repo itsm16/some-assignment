@@ -2,17 +2,20 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { z } from 'zod'
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../store/features/userSlice';
 
 function Modal({ open, setOpen, setToast }) {
     const user = useSelector(state => state.user.user)
+    const name = user.name;
+    const dispatch = useDispatch();
     const [checked, setChecked] = useState(false);
     const [validationError, setValidationError] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const formSchema = z.object({
-        title: z.string().min(3).max(40).trim(),
-        description: z.string().min(3).max(300).trim()
+        title: z.string().min(3).max(100).trim(),
+        description: z.string().min(3).max(400).trim()
     })
 
     const onSubmit = async (data) => {
@@ -27,7 +30,8 @@ function Modal({ open, setOpen, setToast }) {
         const { description, title } = validation.data;
         try {
             await axios.post("http://localhost:3000/api/feedback",
-                checked ? { title, description } : { title, description, user }
+                checked ? { title, description } : { title, description, name },
+                {withCredentials: true}
             )
             reset();
             setValidationError(false);
@@ -71,12 +75,13 @@ function Modal({ open, setOpen, setToast }) {
                             
                             {validationError && <div>
                                 <div className="text-red-500 text-sm">Above fields should be in given range</div>
-                                <div className="text-red-500 text-sm">Title: 3-40, Description: 3-300</div>
+                                <div className="text-red-500 text-sm">Title: 3-100, Description: 3-400</div>
                             </div>}
 
                             <button type="submit" className="btn w-[40%] max-w-[400px] rounded-md bg-gray-200 text-black border-none">Submit</button>
                         </div>
                     </form>
+                    {/* <button onClick={()=>console.log(checked ? "No name" : {name})} className="btn">k</button> */}
                 </div>
             </dialog>
         </>
