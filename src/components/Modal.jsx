@@ -31,7 +31,7 @@ function Modal({ open, setOpen, setToast }) {
         try {
             await axios.post("http://localhost:3000/api/feedback",
                 checked ? { title, description } : { title, description, name },
-                {withCredentials: true}
+                { withCredentials: true }
             )
             reset();
             setValidationError(false);
@@ -72,7 +72,7 @@ function Modal({ open, setOpen, setToast }) {
                                     </label>
                                 </div>
                             </div>
-                            
+
                             {validationError && <div>
                                 <div className="text-red-500 text-sm">Above fields should be in given range</div>
                                 <div className="text-red-500 text-sm">Title: 3-100, Description: 3-400</div>

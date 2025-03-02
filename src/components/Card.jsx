@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 function Card({ title = "Excellent", desc = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae facere ducimus tempore quasi esse aut libero at soluta illum obcaecati rem voluptatibus, optio minima! Ea itaque voluptatum iste cum error nemo et accusamus explicabo saepe provident. Natus aperiam tempora in, minima accusantium quibusdam enim aut adipisci harum eum dolore, assumenda perferendis deleniti expedita voluptas placeat velit voluptatum voluptate eius eos quaerat. Placeat, odio dolore id error at quisquam natus magni repudiandae praesentium illo nisi et assumenda mollitia sapiente perferendis vitae voluptatum vel, reprehenderit consectetur voluptates inventore unde nobis beatae. Harum nobis voluptas, neque explicabo quia maxime odio est in magni!", user }) {
   const [readMore, setReadmore] = useState(false);

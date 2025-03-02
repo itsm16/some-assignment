@@ -60,4 +60,3 @@ function Signup() {
     )
 }
 export default Signup
-// {password.errors ? <p>k</p> : ""}
