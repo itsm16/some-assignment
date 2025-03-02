@@ -1,12 +1,33 @@
-# React + Vite
+Instructions -
+login with : email- tim@mail.com , password - itstim
+____________________________
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend -
+https://some-frontend.vercel.app/
 
-Currently, two official plugins are available:
+React and Redux
+Redux to store the user
+Routes - 
+/ - makes get request to backend to get all feedbacks
+/login - to login and get token through cookie
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+after login user is stored in redux,
+Once user is logged in we can give feedback passing in title, description and name(optional)
 
-## Expanding the ESLint configuration
+Deployed on Vercel 
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+___________________________
+
+Backend -
+store, login user
+authentication using http only cookie 
+
+https://some-backend-task.onrender.com/api/feedback
+
+routes - 
+/login - login
+/user - to check and return user checking the cookie token
+/feedback - get & post requests on /feedbaack to get all feedbacks and post feedback
+
+
+
