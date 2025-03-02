@@ -14,6 +14,7 @@ function App() {
   useEffect(()=>{
       async function fetchUser(){
         const query = await axios.get("https://some-backend-task.onrender.com/api/user",{withCredentials: true})
+        // console.log(query.data)
         dispatch(setUser(query.data.user))
       }
       

@@ -16,7 +16,9 @@ export const userSlice = createSlice({
             console.log(state.user.name)
         },
         setUser: (state, action) => {
-            const {name, email} = action.payload
+            // console.log("SetUser", action.payload)
+            const name = action.payload?.name;
+            const email = action.payload?.email;
             // console.log("Reached in redux", name, email)
             state.user.name = name;
             state.user.email = email;

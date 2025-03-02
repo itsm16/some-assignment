@@ -38,7 +38,7 @@ function Login() {
             },
             {withCredentials: true})
 
-            console.log("Inside login try:", query.data);
+            // console.log("Inside login try:", query.data);
             
             // setQueryErr(false)
             dispatch(setUser(query.data.user));
