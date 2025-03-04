@@ -10,9 +10,9 @@ import { setUser } from './store/features/userSlice'
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(state=> state.user.user);
+  const savedToken = localStorage.getItem("savedToken")
 
   useEffect(()=>{
-    const savedToken = localStorage.getItem("savedToken")
       async function fetchUser(){
         // console.log(savedToken);
         const query = await axios.post("https://some-backend-task.onrender.com/api/user", {token: savedToken},{withCredentials: true})
