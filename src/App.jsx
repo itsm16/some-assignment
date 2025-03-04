@@ -12,11 +12,15 @@ function App() {
   const user = useSelector(state=> state.user.user);
 
   useEffect(()=>{
+    const savedToken = localStorage.getItem("savedToken")
       async function fetchUser(){
-        const query = await axios.get("https://some-backend-task.onrender.com/api/user",{withCredentials: true})
-        // console.log(query.data)
+        // console.log(savedToken);
+        const query = await axios.post("http://localhost:3000/api/user", {token: savedToken},{withCredentials: true})
+        // query && localStorage.setItem("savedUser", query ? query?.data.user : savedToken)
+        // console.log(query);
         dispatch(setUser(query.data.user))
       }
+      
       
       fetchUser();
     },[])

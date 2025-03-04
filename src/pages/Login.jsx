@@ -33,15 +33,16 @@ function Login() {
 
         try {
             const {email, password} = data;
-            const query = await axios.post("https://some-backend-task.onrender.com/api/login",{
+            const query = await axios.post("http://localhost:3000/api/login",{
                 email, password
             },
             {withCredentials: true})
 
-            // console.log("Inside login try:", query.data);
+            // console.log("Inside login try:", query.data.user);
             
             // setQueryErr(false)
-            dispatch(setUser(query.data.user));
+            dispatch(setUser(query?.data.user));
+            localStorage.setItem("savedToken", query?.data.user.token)
             setError(false);
             reset();
             navigate("/");
