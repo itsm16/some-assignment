@@ -16,7 +16,7 @@ function App() {
       async function fetchUser(){
         // console.log(savedToken);
         const query = await axios.post("https://some-backend-task.onrender.com/api/user", {token: savedToken},{withCredentials: true})
-        // query && localStorage.setItem("savedUser", query ? query?.data.user : savedToken)
+        query && localStorage.setItem("savedUser", query ? query?.data.user : null)
         // console.log(query);
         dispatch(setUser(query.data.user))
       }
